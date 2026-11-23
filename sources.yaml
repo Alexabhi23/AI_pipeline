@@ -1,0 +1,142 @@
+sources:
+  # Papers
+  - name: arxiv
+    type: api
+    adapter: arxiv
+    enabled: true
+    config:
+      base_url: "http://export.arxiv.org/api/query"
+      categories: ["cs.AI", "cs.LG", "cs.CL", "cs.CV"]
+      max_results: 500
+      sort_by: "lastUpdatedDate"
+    rate_limit:
+      requests_per_second: 0.33  # arxiv asks for 3s delay
+
+  - name: hf_papers
+    type: web
+    adapter: hf_papers
+    enabled: true
+    config:
+      url: "https://huggingface.co/papers"
+    rate_limit:
+      requests_per_second: 1.0
+
+  # Startups / Products
+  - name: yc_directory
+    type: web
+    adapter: yc
+    enabled: true
+    config:
+      url: "https://www.ycombinator.com/companies"
+      filters: ["AI", "Machine Learning", "Artificial Intelligence"]
+      use_browser: true
+    rate_limit:
+      requests_per_second: 0.5
+
+  - name: product_hunt
+    type: web
+    adapter: producthunt
+    enabled: true
+    config:
+      url: "https://www.producthunt.com/topics/artificial-intelligence"
+      use_browser: true
+    rate_limit:
+      requests_per_second: 0.5
+
+  # News (5 RSS feeds)
+  - name: techcrunch_ai
+    type: rss
+    adapter: rss_news
+    enabled: true
+    config:
+      feed_url: "https://techcrunch.com/category/artificial-intelligence/feed/"
+    rate_limit:
+      requests_per_second: 1.0
+
+  - name: venturebeat_ai
+    type: rss
+    adapter: rss_news
+    enabled: true
+    config:
+      feed_url: "https://venturebeat.com/category/ai/feed/"
+    rate_limit:
+      requests_per_second: 1.0
+
+  - name: the_verge_ai
+    type: rss
+    adapter: rss_news
+    enabled: true
+    config:
+      feed_url: "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"
+    rate_limit:
+      requests_per_second: 1.0
+
+  - name: mit_tech_review
+    type: rss
+    adapter: rss_news
+    enabled: true
+    config:
+      feed_url: "https://www.technologyreview.com/feed/"
+    rate_limit:
+      requests_per_second: 1.0
+
+  - name: ars_technica_ai
+    type: rss
+    adapter: rss_news
+    enabled: true
+    config:
+      feed_url: "https://feeds.arstechnica.com/arstechnica/technology-lab"
+    rate_limit:
+      requests_per_second: 1.0
+
+  # Jobs (5 sources)
+  - name: remoteok
+    type: api
+    adapter: jobs
+    enabled: true
+    config:
+      url: "https://remoteok.com/api"
+      filter_tags: ["ai", "machine-learning", "data-science", "nlp"]
+    rate_limit:
+      requests_per_second: 0.5
+
+  - name: remotive
+    type: api
+    adapter: jobs
+    enabled: true
+    config:
+      url: "https://remotive.com/api/remote-jobs"
+      category: "data"
+    rate_limit:
+      requests_per_second: 1.0
+
+  - name: github_jobs_hn
+    type: web
+    adapter: jobs
+    enabled: true
+    config:
+      url: "https://news.ycombinator.com/item?id=ask_hn_hiring"
+      type: "hn_hiring"
+      use_browser: false
+    rate_limit:
+      requests_per_second: 0.5
+
+  - name: greenhouse_openai
+    type: api
+    adapter: jobs
+    enabled: true
+    config:
+      url: "https://boards-api.greenhouse.io/v1/boards/openai/jobs"
+      company: "OpenAI"
+    rate_limit:
+      requests_per_second: 1.0
+
+  - name: lever_anthropic
+    type: api
+    adapter: jobs
+    enabled: true
+    config:
+      url: "https://api.lever.co/v0/postings/anthropic"
+      company: "Anthropic"
+    rate_limit:
+      requests_per_second: 1.0

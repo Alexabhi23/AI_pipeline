@@ -1,0 +1,39 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# Data and SQLite databases
+data/*.db
+data/*.sqlite3
+data/exports/*.csv
+
+# Playwright
+.playwright/
+
+# Logs
+logs/*.log
+
+# Environment variables
+.env
+.env.local
+
+# Testing and coverage
+.pytest_cache/
+htmlcov/
+.coverage
+.coverage.*
+
+# IDE & OS
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
